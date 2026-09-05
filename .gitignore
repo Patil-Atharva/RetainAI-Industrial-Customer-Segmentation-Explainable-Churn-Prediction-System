@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Root data directory & large datasets (leading slash ensures src/data is NOT ignored)
+/data/
+*.csv
+*.xlsx
+*.parquet
+
+# Root plan directory containing markdown specification files
+/plan/
+
+# Environments & Virtual Envs
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook & IDEs
+.ipynb_checkpoints
+.vscode/
+.idea/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Model checkpoints & artifacts
+models/*.pkl
+models/*.joblib
+models/*.pt
