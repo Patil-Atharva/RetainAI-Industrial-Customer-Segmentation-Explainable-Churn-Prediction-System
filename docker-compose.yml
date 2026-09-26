@@ -1,0 +1,42 @@
+services:
+  # FastAPI REST API Service (Inference & SHAP Explainability)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: retainai_api
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - LOG_LEVEL=info
+    volumes:
+      - ./models:/app/models
+      - ./data/processed:/app/data/processed
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  # Streamlit Interactive Analytics Dashboard Service
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: retainai_dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+    volumes:
+      - ./models:/app/models
+      - ./data/processed:/app/data/processed
+    command: streamlit run run_segmentation.py --server.port=8501 --server.address=0.0.0.0
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

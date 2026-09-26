@@ -1,0 +1,26 @@
+# Git & Virtual Environment
+.git
+.gitignore
+.venv
+venv/
+env/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & System files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Raw Large Datasets (loaded via volumes or pipelines)
+data/online_retail_II.csv
+data/E Commerce Dataset.xlsx

@@ -1,0 +1,37 @@
+{
+  "champion_model": "Tuned HistGradientBoosting",
+  "best_params": {
+    "HistGradientBoosting": {
+      "min_samples_leaf": "10",
+      "max_iter": "250",
+      "max_depth": "6",
+      "learning_rate": "0.1",
+      "l2_regularization": "0.1"
+    },
+    "RandomForest": {
+      "n_estimators": "150",
+      "min_samples_split": "2",
+      "min_samples_leaf": "1",
+      "max_features": "sqrt",
+      "max_depth": "16"
+    }
+  },
+  "metrics": {
+    "Tuned HistGradientBoosting": {
+      "model_name": "Tuned HistGradientBoosting",
+      "roc_auc": 0.9994714349977508,
+      "pr_auc": 0.9974771282664304,
+      "f1_score": 0.9635416666666666,
+      "precision": 0.9536082474226805,
+      "recall": 0.9736842105263158
+    },
+    "Tuned Random Forest": {
+      "model_name": "Tuned Random Forest",
+      "roc_auc": 0.9969017094017094,
+      "pr_auc": 0.9850446313489176,
+      "f1_score": 0.9289617486338798,
+      "precision": 0.9659090909090909,
+      "recall": 0.8947368421052632
+    }
+  }
+}

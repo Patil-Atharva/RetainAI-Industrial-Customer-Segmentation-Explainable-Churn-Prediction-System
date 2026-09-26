@@ -38,3 +38,7 @@ Thumbs.db
 models/*.pkl
 models/*.joblib
 models/*.pt
+
+
+docs/
+interview_prep_qna_1.md

@@ -1,0 +1,71 @@
+{
+  "global_top_features": [
+    {
+      "feature": "MaritalStatus_Married",
+      "mean_abs_shap": 0.028552250719346334
+    },
+    {
+      "feature": "PreferredPaymentMode_Debit Card",
+      "mean_abs_shap": 0.028166408617567494
+    },
+    {
+      "feature": "PreferedOrderCat_Mobile Phone",
+      "mean_abs_shap": 0.02773803308958426
+    },
+    {
+      "feature": "Gender_Female",
+      "mean_abs_shap": 0.027725553348228547
+    },
+    {
+      "feature": "Gender_Male",
+      "mean_abs_shap": 0.02772555334822854
+    },
+    {
+      "feature": "PreferedOrderCat_Laptop & Accessory",
+      "mean_abs_shap": 0.027526463444101108
+    },
+    {
+      "feature": "MaritalStatus_Single",
+      "mean_abs_shap": 0.02680968736541535
+    },
+    {
+      "feature": "PreferredPaymentMode_Credit Card",
+      "mean_abs_shap": 0.026657225468936258
+    },
+    {
+      "feature": "Complain",
+      "mean_abs_shap": 0.026266470004489808
+    },
+    {
+      "feature": "CityTier",
+      "mean_abs_shap": 0.02621094756216598
+    },
+    {
+      "feature": "PreferredLoginDevice_Mobile Phone",
+      "mean_abs_shap": 0.025905049130771223
+    },
+    {
+      "feature": "PreferredLoginDevice_Computer",
+      "mean_abs_shap": 0.025905049130771223
+    },
+    {
+      "feature": "OrderAmountHikeFromlastYear",
+      "mean_abs_shap": 0.023437098068235147
+    },
+    {
+      "feature": "NumberOfAddress",
+      "mean_abs_shap": 0.023411746592083234
+    },
+    {
+      "feature": "DaySinceLastOrder",
+      "mean_abs_shap": 0.0233653144580925
+    }
+  ],
+  "sample_customer_explanation": {
+    "customer_id": "SAMPLE_1001",
+    "churn_probability": 0.0014,
+    "risk_tier": "Low Risk",
+    "top_risk_drivers": [],
+    "top_protective_factors": []
+  }
+}
