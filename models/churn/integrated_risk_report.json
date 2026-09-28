@@ -1,68 +1,68 @@
 {
   "total_customers": 5630,
   "segment_count": 2,
-  "high_risk_customers": 942,
-  "medium_risk_customers": 29,
-  "low_risk_customers": 4659,
+  "high_risk_customers": 971,
+  "medium_risk_customers": 215,
+  "low_risk_customers": 4444,
   "risk_matrix": {
     "High Risk": {
       "Champions": 0,
-      "Hibernating": 942,
+      "Hibernating": 971,
       "Loyal / Steady": 0,
-      "Total": 942
+      "Total": 971
     },
     "Medium Risk": {
       "Champions": 0,
-      "Hibernating": 29,
+      "Hibernating": 215,
       "Loyal / Steady": 0,
-      "Total": 29
+      "Total": 215
     },
     "Low Risk": {
-      "Champions": 1857,
-      "Hibernating": 943,
-      "Loyal / Steady": 1859,
-      "Total": 4659
+      "Champions": 1858,
+      "Hibernating": 728,
+      "Loyal / Steady": 1858,
+      "Total": 4444
     },
     "Total": {
-      "Champions": 1857,
+      "Champions": 1858,
       "Hibernating": 1914,
-      "Loyal / Steady": 1859,
+      "Loyal / Steady": 1858,
       "Total": 5630
     }
   },
   "top_priority_cohort_sample": [
     {
-      "CustomerID": "54288",
+      "CustomerID": "52818",
       "Persona": "Hibernating",
-      "Churn_Probability": 0.9999801771673053,
+      "Churn_Probability": 0.9979671197653786,
+      "Risk_Tier": "High Risk",
+      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
+    },
+    {
+      "CustomerID": "54175",
+      "Persona": "Hibernating",
+      "Churn_Probability": 0.9979671197653786,
+      "Risk_Tier": "High Risk",
+      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
+    },
+    {
+      "CustomerID": "53402",
+      "Persona": "Hibernating",
+      "Churn_Probability": 0.9973726431219843,
+      "Risk_Tier": "High Risk",
+      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
+    },
+    {
+      "CustomerID": "54872",
+      "Persona": "Hibernating",
+      "Churn_Probability": 0.9973726431219843,
       "Risk_Tier": "High Risk",
       "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
     },
     {
       "CustomerID": "52838",
       "Persona": "Hibernating",
-      "Churn_Probability": 0.9999615666730738,
-      "Risk_Tier": "High Risk",
-      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
-    },
-    {
-      "CustomerID": "51245",
-      "Persona": "Hibernating",
-      "Churn_Probability": 0.9999545120763177,
-      "Risk_Tier": "High Risk",
-      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
-    },
-    {
-      "CustomerID": "50006",
-      "Persona": "Hibernating",
-      "Churn_Probability": 0.9999446502860229,
-      "Risk_Tier": "High Risk",
-      "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
-    },
-    {
-      "CustomerID": "54618",
-      "Persona": "Hibernating",
-      "Churn_Probability": 0.9999244199799274,
+      "Churn_Probability": 0.9973699478994958,
       "Risk_Tier": "High Risk",
       "Recommended_Action": "[PUSH NOTIFICATION] App Activity Bonus & Feature Highlight"
     }
