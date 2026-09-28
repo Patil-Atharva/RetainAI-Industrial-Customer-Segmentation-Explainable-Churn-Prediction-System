@@ -1,71 +1,133 @@
 {
   "global_top_features": [
     {
-      "feature": "MaritalStatus_Married",
-      "mean_abs_shap": 0.028552250719346334
-    },
-    {
-      "feature": "PreferredPaymentMode_Debit Card",
-      "mean_abs_shap": 0.028166408617567494
-    },
-    {
-      "feature": "PreferedOrderCat_Mobile Phone",
-      "mean_abs_shap": 0.02773803308958426
-    },
-    {
-      "feature": "Gender_Female",
-      "mean_abs_shap": 0.027725553348228547
-    },
-    {
-      "feature": "Gender_Male",
-      "mean_abs_shap": 0.02772555334822854
-    },
-    {
-      "feature": "PreferedOrderCat_Laptop & Accessory",
-      "mean_abs_shap": 0.027526463444101108
-    },
-    {
-      "feature": "MaritalStatus_Single",
-      "mean_abs_shap": 0.02680968736541535
-    },
-    {
-      "feature": "PreferredPaymentMode_Credit Card",
-      "mean_abs_shap": 0.026657225468936258
+      "feature": "Tenure",
+      "mean_abs_shap": 1.1559567372536943
     },
     {
       "feature": "Complain",
-      "mean_abs_shap": 0.026266470004489808
-    },
-    {
-      "feature": "CityTier",
-      "mean_abs_shap": 0.02621094756216598
-    },
-    {
-      "feature": "PreferredLoginDevice_Mobile Phone",
-      "mean_abs_shap": 0.025905049130771223
-    },
-    {
-      "feature": "PreferredLoginDevice_Computer",
-      "mean_abs_shap": 0.025905049130771223
-    },
-    {
-      "feature": "OrderAmountHikeFromlastYear",
-      "mean_abs_shap": 0.023437098068235147
+      "mean_abs_shap": 0.5316991903443752
     },
     {
       "feature": "NumberOfAddress",
-      "mean_abs_shap": 0.023411746592083234
+      "mean_abs_shap": 0.44609745475678136
+    },
+    {
+      "feature": "OrderVelocity",
+      "mean_abs_shap": 0.34394304875876613
+    },
+    {
+      "feature": "CashbackAmount",
+      "mean_abs_shap": 0.2859445174230188
+    },
+    {
+      "feature": "WarehouseToHome",
+      "mean_abs_shap": 0.2656033785310459
+    },
+    {
+      "feature": "SatisfactionScore",
+      "mean_abs_shap": 0.25611775464774555
+    },
+    {
+      "feature": "CityTier",
+      "mean_abs_shap": 0.24749615310209166
+    },
+    {
+      "feature": "PreferedOrderCat_Laptop & Accessory",
+      "mean_abs_shap": 0.22712692917405686
+    },
+    {
+      "feature": "MaritalStatus_Single",
+      "mean_abs_shap": 0.21621606391576148
+    },
+    {
+      "feature": "NumberOfDeviceRegistered",
+      "mean_abs_shap": 0.2106881558561622
+    },
+    {
+      "feature": "InactivityRatio",
+      "mean_abs_shap": 0.2028491753325137
+    },
+    {
+      "feature": "CashbackPerOrder",
+      "mean_abs_shap": 0.18100983200967308
     },
     {
       "feature": "DaySinceLastOrder",
-      "mean_abs_shap": 0.0233653144580925
+      "mean_abs_shap": 0.1580363955622672
+    },
+    {
+      "feature": "PreferredPaymentMode_Credit Card",
+      "mean_abs_shap": 0.14157743931195152
     }
   ],
   "sample_customer_explanation": {
     "customer_id": "SAMPLE_1001",
-    "churn_probability": 0.0014,
+    "churn_probability": 0.0246,
     "risk_tier": "Low Risk",
-    "top_risk_drivers": [],
-    "top_protective_factors": []
+    "top_risk_drivers": [
+      {
+        "feature": "CityTier",
+        "shap_value": 0.2798,
+        "feature_value": 3.0,
+        "impact": "increases_churn_risk"
+      },
+      {
+        "feature": "OrderVelocity",
+        "shap_value": 0.2705,
+        "feature_value": 0.4444,
+        "impact": "increases_churn_risk"
+      },
+      {
+        "feature": "CouponUsed",
+        "shap_value": 0.2343,
+        "feature_value": 6.0,
+        "impact": "increases_churn_risk"
+      },
+      {
+        "feature": "NumberOfDeviceRegistered",
+        "shap_value": 0.1155,
+        "feature_value": 4.0,
+        "impact": "increases_churn_risk"
+      },
+      {
+        "feature": "InactivityRatio",
+        "shap_value": 0.0761,
+        "feature_value": 0.0157,
+        "impact": "increases_churn_risk"
+      }
+    ],
+    "top_protective_factors": [
+      {
+        "feature": "NumberOfAddress",
+        "shap_value": -0.3875,
+        "feature_value": 3.0,
+        "impact": "reduces_churn_risk"
+      },
+      {
+        "feature": "PreferredPaymentMode_Debit Card",
+        "shap_value": -0.3221,
+        "feature_value": 1.0,
+        "impact": "reduces_churn_risk"
+      },
+      {
+        "feature": "CashbackPerOrder",
+        "shap_value": -0.2275,
+        "feature_value": 20.1944,
+        "impact": "reduces_churn_risk"
+      },
+      {
+        "feature": "PreferedOrderCat_Laptop & Accessory",
+        "shap_value": -0.1599,
+        "feature_value": 1.0,
+        "impact": "reduces_churn_risk"
+      },
+      {
+        "feature": "Tenure",
+        "shap_value": -0.1574,
+        "feature_value": 17.0,
+        "impact": "reduces_churn_risk"
+      }
+    ]
   }
 }

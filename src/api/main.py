@@ -105,24 +105,24 @@ app = FastAPI(
 # --- PYDANTIC SCHEMAS ---
 
 class CustomerFeaturesInput(BaseModel):
-    Tenure: float = Field(12.0, example=12.0, description="Months customer has stayed with company")
-    CityTier: int = Field(1, example=1, description="City Tier (1, 2, 3)")
-    WarehouseToHome: float = Field(10.0, example=15.0, description="Distance from warehouse to home in km")
-    HourSpendOnApp: float = Field(3.0, example=3.5, description="Average hours spent on app per day")
-    NumberOfDeviceRegistered: int = Field(3, example=4, description="Number of registered devices")
-    SatisfactionScore: int = Field(3, example=2, description="Customer satisfaction score (1 to 5)")
-    NumberOfAddress: int = Field(1, example=2, description="Number of registered delivery addresses")
-    Complain: int = Field(0, example=1, description="Complaint logged flag (1=Yes, 0=No)")
-    OrderAmountHikeFromlastYear: float = Field(15.0, example=14.0, description="Percentage order amount hike from last year")
-    CouponUsed: float = Field(1.0, example=2.0, description="Number of coupons used")
-    OrderCount: float = Field(2.0, example=3.0, description="Total order count")
-    DaySinceLastOrder: float = Field(5.0, example=12.0, description="Days elapsed since last order")
-    CashbackAmount: float = Field(160.0, example=150.0, description="Total cashback received")
-    PreferredLoginDevice: str = Field("Mobile Phone", example="Mobile Phone", description="Preferred login device")
-    PreferredPaymentMode: str = Field("Debit Card", example="Debit Card", description="Preferred payment mode")
-    Gender: str = Field("Female", example="Female", description="Gender")
-    PreferedOrderCat: str = Field("Laptop & Accessory", example="Mobile Phone", description="Preferred order category")
-    MaritalStatus: str = Field("Single", example="Single", description="Marital status")
+    Tenure: float = Field(12.0, description="Months customer has stayed with company", json_schema_extra={"example": 12.0})
+    CityTier: int = Field(1, description="City Tier (1, 2, 3)", json_schema_extra={"example": 1})
+    WarehouseToHome: float = Field(10.0, description="Distance from warehouse to home in km", json_schema_extra={"example": 15.0})
+    HourSpendOnApp: float = Field(3.0, description="Average hours spent on app per day", json_schema_extra={"example": 3.5})
+    NumberOfDeviceRegistered: int = Field(3, description="Number of registered devices", json_schema_extra={"example": 4})
+    SatisfactionScore: int = Field(3, description="Customer satisfaction score (1 to 5)", json_schema_extra={"example": 2})
+    NumberOfAddress: int = Field(1, description="Number of registered delivery addresses", json_schema_extra={"example": 2})
+    Complain: int = Field(0, description="Complaint logged flag (1=Yes, 0=No)", json_schema_extra={"example": 1})
+    OrderAmountHikeFromlastYear: float = Field(15.0, description="Percentage order amount hike from last year", json_schema_extra={"example": 14.0})
+    CouponUsed: float = Field(1.0, description="Number of coupons used", json_schema_extra={"example": 2.0})
+    OrderCount: float = Field(2.0, description="Total order count", json_schema_extra={"example": 3.0})
+    DaySinceLastOrder: float = Field(5.0, description="Days elapsed since last order", json_schema_extra={"example": 12.0})
+    CashbackAmount: float = Field(160.0, description="Total cashback received", json_schema_extra={"example": 150.0})
+    PreferredLoginDevice: str = Field("Mobile Phone", description="Preferred login device", json_schema_extra={"example": "Mobile Phone"})
+    PreferredPaymentMode: str = Field("Debit Card", description="Preferred payment mode", json_schema_extra={"example": "Debit Card"})
+    Gender: str = Field("Female", description="Gender", json_schema_extra={"example": "Female"})
+    PreferedOrderCat: str = Field("Laptop & Accessory", description="Preferred order category", json_schema_extra={"example": "Mobile Phone"})
+    MaritalStatus: str = Field("Single", description="Marital status", json_schema_extra={"example": "Single"})
 
 
 class BatchCustomerFeaturesInput(BaseModel):
@@ -159,6 +159,20 @@ class HealthCheckResponse(BaseModel):
     feature_engineer_loaded: bool
     model_path: str
     version: str
+
+
+class CustomerSegmentInput(BaseModel):
+    customer_id: Optional[str] = "N/A"
+    Recency: float = Field(30.0, description="Days elapsed since last purchase", json_schema_extra={"example": 30.0})
+    Frequency: float = Field(5.0, description="Total order / transaction count", json_schema_extra={"example": 5.0})
+    Monetary: float = Field(1200.0, description="Total monetary spend ($)", json_schema_extra={"example": 1200.0})
+
+
+class CustomerSegmentResponse(BaseModel):
+    customer_id: Optional[str] = "N/A"
+    cluster_id: int
+    persona: str
+    recommended_strategy: str
 
 
 # --- HELPER FUNCTIONS ---
@@ -204,6 +218,41 @@ def health_check():
         feature_engineer_loaded=fe is not None,
         model_path=model_cache.get("model_path", "None"),
         version="1.0.0"
+    )
+
+
+@app.post("/segment_customer", response_model=CustomerSegmentResponse, tags=["Segmentation"])
+def segment_customer(customer: CustomerSegmentInput):
+    recency = customer.Recency
+    frequency = customer.Frequency
+    monetary = customer.Monetary
+
+    if recency <= 90 and frequency >= 5 and monetary >= 1000:
+        cluster_id = 0
+        persona = "Champions"
+        strategy = "VIP Loyalty Concierge & Exclusive Upsell"
+    elif recency > 180 and frequency <= 2 and monetary <= 600:
+        cluster_id = 1
+        persona = "Hibernating"
+        strategy = "Automated Reactivation Push & Feature Highlight"
+    elif recency > 120 and (frequency >= 4 or monetary >= 800):
+        cluster_id = 2
+        persona = "At Risk"
+        strategy = "High-Touch Win-Back & Retention Discount"
+    elif recency <= 60 and frequency <= 2:
+        cluster_id = 3
+        persona = "New / Low Engagement"
+        strategy = "Onboarding Nurture & First-Reorder Incentive"
+    else:
+        cluster_id = 4
+        persona = "Loyal / Steady"
+        strategy = "Cross-Sell Accelerator & Tier Upgrade"
+
+    return CustomerSegmentResponse(
+        customer_id=customer.customer_id,
+        cluster_id=cluster_id,
+        persona=persona,
+        recommended_strategy=strategy
     )
 
 
